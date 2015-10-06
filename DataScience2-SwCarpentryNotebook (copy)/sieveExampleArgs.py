@@ -3,8 +3,9 @@
 
 # ##Sieve of Eratosthenes
 
-# In[1]:
+# In[20]:
 
+import sys
 def sieveOfEratosthenes(n):
     """sieveOfEratosthenes(n): return the list of the primes < n."""
     # Code from: <dickinsm@gmail.com>, Nov 30 2006
@@ -18,15 +19,19 @@ def sieveOfEratosthenes(n):
             bottom = (si*si - 3) / 2
             if bottom >= top:
                 break
-                sieve[bottom::si] = [0] * -((bottom - top) / si)
+            sieve[bottom::si] = [0] * -((bottom - top) / si)
     return [2] + [el for el in sieve if el]
 
 
-# In[2]:
+# In[26]:
 
-print sieveOfEratosthenes(1000)
-print 'Is modified, u see'
-
+if __name__ == '__main__':
+    if len(sys.argv)!=2:
+           print 'One Argument is mandatory'
+    else:
+           n = sys.argv[1] 
+           print 'List of primes numbers <', n 
+           print sieveOfEratosthenes(int(n))
 
 # In[ ]:
 
